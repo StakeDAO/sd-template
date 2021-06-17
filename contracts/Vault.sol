@@ -101,6 +101,7 @@ contract Vault is ERC20, ERC20Detailed {
         return token.balanceOf(address(this)).mul(min).div(max);
     }
 
+    // to deposit 95% of vault tokens inside strategy
     function earn() public {
         uint256 _bal = available();
         token.safeTransfer(controller, _bal);
@@ -112,6 +113,7 @@ contract Vault is ERC20, ERC20Detailed {
         deposit(token.balanceOf(msg.sender));
     }
 
+    // to deposit user tokens inside vault
     function deposit(uint256 _amount) public {
         uint256 _pool = balance();
         uint256 _before = token.balanceOf(address(this));
